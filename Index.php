@@ -1,12 +1,12 @@
 <?php
-require_once 'Product.php';
-require_once 'Category.php';
-require_once 'User.php';
-require_once 'Order.php';
+require 'Product.php';
+require 'Category.php';
+require 'User.php';
+require 'Order.php';
 
 // Creating products
-$product1 = new Product("Laptop", 1500, "A high-performance laptop.");
-$product2 = new Product("Smartphone", 800, "A new generation smartphone.");
+$product1 = new Product("Laptop", 1500, "Laptop canggih.");
+$product2 = new Product("Smartphone", 800, "Hp keluaran tahun 2025.");
 
 // Creating a category and adding products
 $category = new Category("Electronics");
@@ -14,7 +14,7 @@ $category->addProduct($product1);
 $category->addProduct($product2);
 
 // Creating a user
-$user = new User("John Doe", "john@example.com");
+$user = new User("supri racing", "supri@gmail.com");
 
 // Creating an order and adding products
 $order = new Order($user);
