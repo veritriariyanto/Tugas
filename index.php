@@ -1,27 +1,31 @@
 <?php
-require 'Product.php';
-require 'Category.php';
-require 'User.php';
-require 'Order.php';
+require_once './Class/Destination.php';
+require_once './Class/Hotel.php';
+require_once './Class/Transport.php';
+require_once './Class/Paket.php';
 
-// Creating products
-$product1 = new Product("Laptop", 1500, "Laptop canggih.");
-$product2 = new Product("Smartphone", 800, "Hp keluaran tahun 2025.");
+// Contoh penggunaan class
+$destination = new Destination(1, "Pantai Kuta", "Pantai indah di Bali", "Bali", 50000, "image.jpg", "2024-01-01", "2024-01-02");
+$hotel = new Hotel(1, "Hotel Bali Indah", "Jl. Sunset Road", 300000, 1, "2024-01-01", "2024-01-02");
+$transport = new Transport(1, "Bus Bali", "bis", 100000, 1, "2024-01-01", "2024-01-02");
 
-// Creating a category and adding products
-$category = new Category("Electronics");
-$category->addProduct($product1);
-$category->addProduct($product2);
+$paket = new Paket(
+    $destination->id,
+    $destination->nama_destinasi,
+    $destination->deskripsi,
+    $destination->lokasi,
+    $destination->htm,
+    $destination->image,
+    $destination->created_at,
+    $destination->updated_at,
+    "Paket Liburan Bali",
+    "Liburan lengkap ke Bali",
+    0,
+    $hotel->id,
+    $transport->id
+);
 
-// Creating a user
-$user = new User("supri racing", "supri@gmail.com");
-
-// Creating an order and adding products
-$order = new Order($user);
-$order->addProduct($product1);
-$order->addProduct($product2);
-
-// Displaying information
-$category->displayCategory();
-$order->displayOrder();
+$harga_total = $paket->hitungHargaTotal($transport->biaya, $hotel->harga_per_malam);
+echo "Nama Paket: " . $paket->nama_paket . "<br>";
+echo "Harga Total: Rp" . $harga_total;
 ?>
