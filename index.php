@@ -51,19 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $paket->save($pdo);
         echo "<p>Data paket berhasil ditambahkan!</p>";
             // Proses input Paket setelah User
-    if (isset($_POST['nama_paket']) && isset($_POST['deskripsi']) && isset($_POST['destination_id']) && isset($_POST['hotel_id']) && isset($_POST['transport_id'])) {
-        $nama_paket = $_POST['nama_paket'];
-        $deskripsi = $_POST['deskripsi'];
-        $destination_id = $_POST['destination_id'];
-        $hotel_id = $_POST['hotel_id'];
-        $transport_id = $_POST['transport_id'];
-
-        $paket = new Paket($nama_paket, $deskripsi, $destination_id, $hotel_id, $transport_id);
-        $paket->save($pdo);
-        echo "<p>Data paket berhasil ditambahkan!</p>";
-    } else {
-        echo "<p>Gagal menambahkan data paket!</p>";
-    }
     } elseif (isset($_POST['daftar'])) {
     // Proses input User
     $username = $_POST['username'];
